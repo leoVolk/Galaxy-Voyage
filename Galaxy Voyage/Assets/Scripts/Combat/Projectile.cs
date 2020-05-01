@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, .5f, ignore))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, .25f, ignore))
         {
             Destroy(Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)).gameObject, 2f);
             Destroy(this.gameObject);

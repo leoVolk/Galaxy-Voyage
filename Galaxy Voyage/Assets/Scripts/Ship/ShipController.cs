@@ -36,7 +36,7 @@ public class ShipController : MonoBehaviour
 
     public void LookAtMousePos()
     {
-        transform.forward = Vector3.Lerp(transform.forward, mousePos - transform.position, Time.deltaTime * rotation);
+        transform.forward = Vector3.Lerp(transform.forward, mousePos - transform.position, Time.deltaTime * (rotation/100));
         
     }
 
