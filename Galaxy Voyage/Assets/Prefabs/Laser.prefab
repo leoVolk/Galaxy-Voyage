@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401857254647586399}
   - component: {fileID: -8960527407389943952}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be99fc9a3dede784ba0eff5e41878fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignore:
+    serializedVersion: 2
+    m_Bits: 1536
   projectileSpeed: 50
 --- !u!1 &401857255581882771
 GameObject:
@@ -58,7 +61,7 @@ GameObject:
   - component: {fileID: 401857255581882478}
   - component: {fileID: 401857255581882769}
   - component: {fileID: 401857255581882768}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8709371030117522714}
   - component: {fileID: 756814063417154510}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

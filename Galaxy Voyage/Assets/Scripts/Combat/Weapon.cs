@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
         int nextSpawnIndex = currentSpawnerIndex;
 
         while(nextSpawnIndex == lastSpawnIndex){
-            nextSpawnIndex = Random.Range(0, projectileSpawner.Length-1);
+            nextSpawnIndex = Random.Range(0, projectileSpawner.Length);
         }
 
         currentSpawnerIndex = nextSpawnIndex;
