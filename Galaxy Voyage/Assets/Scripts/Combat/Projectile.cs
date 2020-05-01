@@ -6,11 +6,8 @@ public class Projectile : MonoBehaviour
 {
     public LayerMask ignore;
     public float projectileSpeed = 30;
+    public ParticleSystem impactEffect;
 
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
     void Start()
     {
         ignore = ~ignore;
@@ -21,10 +18,10 @@ public class Projectile : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, ignore))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, .5f, ignore))
         {
-            print(hit.transform.name);
-           // Destroy(this.gameObject);
+            Destroy(Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal)).gameObject, 2f);
+            Destroy(this.gameObject);
         }
     }
 }

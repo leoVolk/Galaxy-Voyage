@@ -6,7 +6,7 @@ using NaughtyAttributes;
 public class ShipInput : MonoBehaviour
 {
     [Header("Input Keys")]
-    public KeyCode increaseThrust = KeyCode.W, decreaseThrust = KeyCode.S;
+    public KeyCode increaseThrust = KeyCode.W, decreaseThrust = KeyCode.S, fixedPosition = KeyCode.Mouse1;
 
     [Header("Input States")]
     [HideInInspector]
@@ -47,6 +47,7 @@ public class ShipInput : MonoBehaviour
 
         throttle = Mathf.MoveTowards(throttle, target, Time.deltaTime * THROTTLE_SPEED);
     }
+    
     /// <summary>
     /// Deprecated, staying for possible feature use
     /// </summary>

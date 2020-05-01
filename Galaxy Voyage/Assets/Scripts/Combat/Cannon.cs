@@ -22,11 +22,17 @@ public class Cannon : Weapon
     public bool isOverheated = false;
 
 
-
+    private WeaponController controller;
     private float timeToNextFire = 0f;
+
+    void Start()
+    {
+        controller = GetComponentInParent<WeaponController>();
+    }
+
     void Update()
     {
-        if (isFiring)
+        if (isFiring && controller.currentWeapon == this)
             TryShoot();
 
         if (!isFiring || isOverheated)

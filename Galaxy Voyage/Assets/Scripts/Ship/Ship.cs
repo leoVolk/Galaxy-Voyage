@@ -23,6 +23,7 @@ public class Ship : MonoBehaviour
     public static Ship PlayerShip { get { return playerShip; } }
     private static Ship playerShip;
     public float Throttle { get { return input.throttle; } }
+    public Vector3 MousePosition { get { return input.GetMousePos(); } }
 
     [Header("Ship Properties")]
     public ShipSpecifications specifications;
@@ -34,6 +35,8 @@ public class Ship : MonoBehaviour
     {
         input = GetComponent<ShipInput>();
         controller = GetComponent<ShipController>();
+        if(isPlayer)
+            playerShip = this;
     }
 
     // Update is called once per frame
@@ -42,16 +45,13 @@ public class Ship : MonoBehaviour
 
         if (isPlayer)
         {
-
             if (Input.GetKey(KeyCode.Space))
                 TimeManager._instance.DoSlowmotion();
-
 
             controller.ApplyInput(input.throttle * specifications.throttleAcceleration, input.strafe * specifications.strafeAcceleration, specifications.rotationalAcceleration);
 
             controller.SetMousePosition(input.GetMousePos());
-
-            playerShip = this;
+            
         }
     }
 }

@@ -14,15 +14,17 @@ public class WeaponInput : MonoBehaviour
         controller = GetComponent<WeaponController>();
     }
 
-
     // Update is called once per frame
     void Update()
     {
         controller.currentWeapon.isFiring = Input.GetKey(fireInput);
 
-        if(Input.GetAxis("Mouse ScrollWheel") < 0){
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
             controller.SwitchWeaponDown();
-        }else if(Input.GetAxis("Mouse ScrollWheel") > 0){
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
             controller.SwitchWeaponUp();
         }
     }

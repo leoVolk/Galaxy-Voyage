@@ -49,6 +49,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1536
   projectileSpeed: 50
+  impactEffect: {fileID: 8175196674015593857, guid: 70f854b3afd03524f8154cee22b9dd6c,
+    type: 3}
 --- !u!1 &401857255581882771
 GameObject:
   m_ObjectHideFlags: 0
