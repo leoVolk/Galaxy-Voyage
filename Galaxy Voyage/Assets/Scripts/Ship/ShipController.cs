@@ -17,8 +17,9 @@ public class ShipController : MonoBehaviour
 
     void Update()
     {
-        LookAtMousePos();
+        //LookAtMousePos();
         UpdatePositionWithKeyboardInput();
+        UpdateRotationWithKeyBoardInput();
     }
 
     public void ApplyInput(float throttle, float strafe, float rotation)
@@ -34,9 +35,14 @@ public class ShipController : MonoBehaviour
         transform.position += transform.right * strafe * Time.deltaTime;
     }
 
+
+    void UpdateRotationWithKeyBoardInput(){
+        transform.RotateAround(transform.position, transform.up, rotation * Time.deltaTime);
+    }
+
     public void LookAtMousePos()
     {
-        transform.forward = Vector3.Lerp(transform.forward, mousePos - transform.position, Time.deltaTime * (rotation/100));
+        transform.forward = Vector3.Lerp(transform.forward, mousePos - transform.position, Time.deltaTime * rotation);
         
     }
 

@@ -71,7 +71,7 @@ public class WeaponController : MonoBehaviour
             // set to starboard weaponry
             currentWeapon = weapons[1];
         }
-        else
+        else if(angle > -30 && angle < 30f)
         {
             //set to forward weaponry
             currentWeapon = weapons[2];
@@ -80,6 +80,6 @@ public class WeaponController : MonoBehaviour
 
     float AngleDir()
     {
-        return Vector3.SignedAngle(Ship.PlayerShip.MousePosition, transform.forward, transform.up);
+        return Vector3.SignedAngle(transform.forward, Ship.PlayerShip.MousePosition - transform.position, transform.up);
     }
 }

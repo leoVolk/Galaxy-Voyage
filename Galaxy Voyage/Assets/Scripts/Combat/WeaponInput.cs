@@ -18,14 +18,15 @@ public class WeaponInput : MonoBehaviour
     void Update()
     {
         controller.currentWeapon.isFiring = Input.GetKey(fireInput);
+        controller.SetWeaponBasedOnAngle();
 
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+/*         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             controller.SwitchWeaponDown();
         }
         else if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             controller.SwitchWeaponUp();
-        }
+        } */
     }
 }

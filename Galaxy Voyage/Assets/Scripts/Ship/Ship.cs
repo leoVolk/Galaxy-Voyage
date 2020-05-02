@@ -48,7 +48,7 @@ public class Ship : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
                 TimeManager._instance.DoSlowmotion();
 
-            controller.ApplyInput(input.throttle * specifications.throttleAcceleration, input.strafe * specifications.strafeAcceleration, specifications.rotationalAcceleration);
+            controller.ApplyInput(input.throttle * specifications.throttleAcceleration, input.strafe * specifications.strafeAcceleration, input.rotation * specifications.rotationalAcceleration);
 
             controller.SetMousePosition(input.GetMousePos());
             
