@@ -7,6 +7,8 @@ public class WeaponInput : MonoBehaviour
 {
     [Header("Input Keys")]
     public KeyCode fireInput;
+
+
     private WeaponController controller;
 
     void Awake()
@@ -17,16 +19,7 @@ public class WeaponInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        controller.currentWeapon.isFiring = Input.GetKey(fireInput);
+        controller.ShootWeaponsBasedOnAngle(Input.GetKey(fireInput));
         controller.SetWeaponBasedOnAngle();
-
-/*         if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            controller.SwitchWeaponDown();
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            controller.SwitchWeaponUp();
-        } */
     }
 }

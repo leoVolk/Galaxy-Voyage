@@ -124,4 +124,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 45
-  destroyEffect: {fileID: 0}
+  destroyEffect: {fileID: 180756252628094044, guid: 0167802ff19711040a21beaca02eb1b7,
+    type: 3}

@@ -6,12 +6,16 @@ using NaughtyAttributes;
 public class ShipInput : MonoBehaviour
 {
     [Header("Input Keys")]
-    public KeyCode increaseThrust = KeyCode.W, decreaseThrust = KeyCode.S, fixedPosition = KeyCode.Mouse1, increaseRotation = KeyCode.D, decreaseRotaion = KeyCode.A;
+    public KeyCode increaseThrust = KeyCode.W;
+    public KeyCode decreaseThrust = KeyCode.S; 
+    public KeyCode increaseRotation = KeyCode.D; 
+    public KeyCode decreaseRotaion = KeyCode.A;
+    public KeyCode fixedPosition = KeyCode.Mouse1; 
 
     [Header("Input States")]
     [HideInInspector]
     public float strafe;
-    
+
     [ProgressBar("Throttle", 1, EColor.Indigo)]
     [ReadOnly]
     [Range(0, 1)]
@@ -54,7 +58,8 @@ public class ShipInput : MonoBehaviour
         throttle = Mathf.MoveTowards(throttle, target, Time.deltaTime * THROTTLE_SPEED);
     }
 
-    private void UpdateKeyboardRotation(KeyCode increaseKey, KeyCode decreaseKey){
+    private void UpdateKeyboardRotation(KeyCode increaseKey, KeyCode decreaseKey)
+    {
         float target = rotation;
 
         if (Input.GetKey(increaseKey))
@@ -66,7 +71,7 @@ public class ShipInput : MonoBehaviour
 
         rotation = Mathf.MoveTowards(rotation, target, Time.deltaTime * ROTATION_SPEED);
     }
-    
+
     /// <summary>
     /// Deprecated, staying for possible feature use
     /// </summary>
@@ -89,7 +94,9 @@ public class ShipInput : MonoBehaviour
     public Vector3 GetMousePos()
     {
         Vector3 lookAtPos = Input.mousePosition;
-        lookAtPos.z = playerCamera.transform.position.y - transform.position.y;
+        if (playerCamera != null)
+            lookAtPos.z = playerCamera.transform.position.y - transform.position.y;
+
         lookAtPos = playerCamera.ScreenToWorldPoint(lookAtPos);
 
         return lookAtPos;

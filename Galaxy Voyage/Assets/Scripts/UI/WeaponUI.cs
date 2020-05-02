@@ -16,9 +16,9 @@ public class WeaponUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (text != null && Ship.PlayerShip != null)
+/*         if (text != null && Ship.PlayerShip != null)
         {
             text.text = string.Format("Current Weapon:\n {0}", (weaponController.currentWeapon.name));
-        }
+        } */
     }
 }

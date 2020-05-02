@@ -7,49 +7,21 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [Header("Components")]
-    public List<Weapon> weapons;
+    public List<Weapon> portArmament; 
+    public List<Weapon> starboardArmament; 
+    public List<Weapon> sternArmament; 
+    public List<Weapon> bowArmament;
 
+
+    [Header("Info")]
     //[HideInInspector]
-    public Weapon currentWeapon;
+    public List<Weapon> currentWeapons;
 
     private int weaponIndex = 0;
 
     void Start()
     {
-        if (weapons.Count == 0)
-        {
-            weapons.AddRange(GetComponentsInChildren<Weapon>());
-        }
 
-        currentWeapon = weapons[0];
-    }
-
-    public void SwitchWeaponDown()
-    {
-        if (weaponIndex == 0)
-        {
-            weaponIndex = weapons.Count - 1;
-        }
-        else
-        {
-            weaponIndex--;
-        }
-
-        currentWeapon = weapons[weaponIndex];
-    }
-
-    public void SwitchWeaponUp()
-    {
-        if (weaponIndex == weapons.Count - 1)
-        {
-            weaponIndex = 0;
-        }
-        else
-        {
-            weaponIndex++;
-        }
-
-        currentWeapon = weapons[weaponIndex];
     }
 
     /// <summary>
@@ -61,20 +33,33 @@ public class WeaponController : MonoBehaviour
     {
         float angle = AngleDir();
         
-        if (angle <= -30f)
+        if (angle <= -30f && angle >= -150f)
         {
-            // set to port weaponry
-            currentWeapon = weapons[0];
+            // set to port armament
+            currentWeapons = portArmament;
         }
-        else if (angle >= 30f)
+        else if (angle >= 30f && angle <= 150f)
         {
-            // set to starboard weaponry
-            currentWeapon = weapons[1];
+            // set to starboard armament
+            currentWeapons = starboardArmament;
         }
-        else if(angle > -30 && angle < 30f)
+        else if(angle > -30f && angle < 30f)
         {
-            //set to forward weaponry
-            currentWeapon = weapons[2];
+            //set to bow armament
+            currentWeapons = bowArmament;
+        }
+        else if(angle > 150f || angle < -150f)
+        {
+            // set to stern armament
+            currentWeapons = sternArmament;
+        }
+    }
+
+    public void ShootWeaponsBasedOnAngle(bool firing){
+        if(currentWeapons.Count > 0){
+            foreach(Weapon weapon in currentWeapons){
+                weapon.isFiring = firing;
+            }
         }
     }
 

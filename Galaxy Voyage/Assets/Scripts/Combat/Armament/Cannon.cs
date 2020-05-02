@@ -25,14 +25,14 @@ public class Cannon : Weapon
     private WeaponController controller;
     private float timeToNextFire = 0f;
 
-    void Start()
+    protected void Start()
     {
         controller = GetComponentInParent<WeaponController>();
     }
 
-    void Update()
+    protected void Update()
     {
-        if (isFiring && controller.currentWeapon == this)
+        if (isFiring && controller.currentWeapons.Contains(this))
             TryShoot();
 
         if (!isFiring || isOverheated)
@@ -44,11 +44,17 @@ public class Cannon : Weapon
     {
         if (heatLevel < 100 && Time.time >= timeToNextFire && !isOverheated)
         {
-            heatLevel += heatBuildUp;
+            
             timeToNextFire = Time.time + 60f / fireRate;
-            ShootProjectile();
+            for (int i = 0; i < projectileSpawner.Length; i++)
+            {
+                currentSpawnerIndex = i; 
+                heatLevel += heatBuildUp;
+                ShootProjectile();
+            }
+            
             //SwitchSpawnerIndex();
-            SetToRandomWeaponIndex();
+            // SetToRandomWeaponIndex();
         }
 
         if (heatLevel >= 100)
@@ -57,7 +63,7 @@ public class Cannon : Weapon
         }
     }
 
-    void ShootProjectile()
+    protected void ShootProjectile()
     {
         PlayMuzzleFlashAtSpawner();
         Destroy(Instantiate(projectilePrefab, projectileSpawner[currentSpawnerIndex].position, Quaternion.LookRotation(projectileSpawner[currentSpawnerIndex].forward)).gameObject, 2f);

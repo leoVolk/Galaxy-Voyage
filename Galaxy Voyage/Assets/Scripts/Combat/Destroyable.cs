@@ -27,7 +27,7 @@ public class Destroyable : MonoBehaviour
 
     void Destroy(){
         if(destroyEffect != null){
-            Destroy(Instantiate(destroyEffect, transform.position, Quaternion.identity), 3f);
+            Destroy(Instantiate(destroyEffect, transform.position, Quaternion.identity).gameObject, 2f);
         }
 
         Destroy(this.gameObject);
