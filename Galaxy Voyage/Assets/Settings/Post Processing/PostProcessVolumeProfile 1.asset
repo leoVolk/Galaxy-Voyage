@@ -104,7 +104,7 @@ MonoBehaviour:
     overrideState: 1
     value: 0
   postExposure:
-    overrideState: 1
+    overrideState: 0
     value: 0
   contrast:
     overrideState: 1
@@ -1463,19 +1463,19 @@ MonoBehaviour:
     overrideState: 1
     value: 0
   clamp:
-    overrideState: 0
+    overrideState: 1
     value: 0.75
   diffusion:
     overrideState: 1
     value: 10
   anamorphicRatio:
-    overrideState: 1
+    overrideState: 0
     value: 0
   color:
     overrideState: 1
     value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
-    overrideState: 1
+    overrideState: 0
     value: 0
   dirtTexture:
     overrideState: 0

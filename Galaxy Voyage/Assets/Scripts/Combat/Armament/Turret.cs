@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Turret : Cannon
 {
-    private float timeToNextFire = 0f;
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         base.Update();
         RotateSpawner();
     }
 
+    /// <summary>
+    /// TODO: Fix turret rotation
+    /// </summary>
     void RotateSpawner(){
-        Vector3 lookAtPos = Ship.PlayerShip.MousePosition - transform.position;
+        Vector3 lookAtPos = Utils.GetMousePositon(transform);
         
 
         foreach(Transform t in projectileSpawner){

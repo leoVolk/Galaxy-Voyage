@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipController : MonoBehaviour
 {
 
+    private CharacterController controller;
     private float throttle;
     private float strafe;
     private float rotation;
@@ -12,14 +13,14 @@ public class ShipController : MonoBehaviour
 
     void Awake()
     {
-
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
         //LookAtMousePos();
-        UpdatePositionWithKeyboardInput();
         UpdateRotationWithKeyBoardInput();
+        UpdatePositionWithKeyboardInput();
     }
 
     public void ApplyInput(float throttle, float strafe, float rotation)
@@ -31,8 +32,9 @@ public class ShipController : MonoBehaviour
 
     void UpdatePositionWithKeyboardInput()
     {
-        transform.position += transform.forward * throttle * Time.deltaTime;
-        transform.position += transform.right * strafe * Time.deltaTime;
+        //transform.position += transform.forward * throttle * Time.deltaTime;
+        //transform.position += transform.right * strafe * Time.deltaTime;
+        controller.Move(transform.forward * throttle * Time.deltaTime);
     }
 
 

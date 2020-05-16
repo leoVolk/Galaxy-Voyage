@@ -8,7 +8,6 @@ public class WeaponInput : MonoBehaviour
     [Header("Input Keys")]
     public KeyCode fireInput;
 
-
     private WeaponController controller;
 
     void Awake()
@@ -19,7 +18,11 @@ public class WeaponInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        controller.ShootWeaponsBasedOnAngle(Input.GetKey(fireInput));
+        if(Input.GetKey(fireInput))
+            controller.ShootWeaponsBasedOnAngle(true);
+        else
+            controller.ShootWeaponsBasedOnAngle(false);
+        
         controller.SetWeaponBasedOnAngle();
     }
 }

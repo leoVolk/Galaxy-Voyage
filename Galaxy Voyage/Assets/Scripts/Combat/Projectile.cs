@@ -27,9 +27,17 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void TryDamaging(GameObject hitObj){
+    void TryDamaging(GameObject hitObj)
+    {
         Destroyable destroyable;
-        if(hitObj.TryGetComponent<Destroyable>(out destroyable)){
+        if (hitObj.TryGetComponent<Destroyable>(out destroyable))
+        {
+            destroyable.TakeDamage(damageOutput);
+        }
+        // for objects with colliders in children
+        else if (hitObj.GetComponentInParent<Destroyable>() != null)
+        {
+            destroyable = hitObj.GetComponentInParent<Destroyable>();
             destroyable.TakeDamage(damageOutput);
         }
     }

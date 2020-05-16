@@ -23,7 +23,7 @@ public class Cannon : Weapon
 
 
     private WeaponController controller;
-    private float timeToNextFire = 0f;
+    protected float timeToNextFire = 0f;
 
     protected void Start()
     {
@@ -82,8 +82,7 @@ public class Cannon : Weapon
 
     void PlayMuzzleFlashAtSpawner(){
         if(muzzleFlash != null){
-            muzzleFlash.transform.position = projectileSpawner[currentSpawnerIndex].position;
-            muzzleFlash.Play();
+            Destroy(Instantiate(muzzleFlash, projectileSpawner[currentSpawnerIndex].position, Quaternion.LookRotation(projectileSpawner[currentSpawnerIndex].forward)).gameObject, 1f);
         }
     }
 

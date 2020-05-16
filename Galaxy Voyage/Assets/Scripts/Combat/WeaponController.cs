@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(WeaponInput))]
 public class WeaponController : MonoBehaviour
 {
     [Header("Components")]
@@ -65,6 +64,6 @@ public class WeaponController : MonoBehaviour
 
     float AngleDir()
     {
-        return Vector3.SignedAngle(transform.forward, Ship.PlayerShip.MousePosition - transform.position, transform.up);
+        return Vector3.SignedAngle(transform.forward,Utils.GetMousePositon(transform)- transform.position, transform.up);
     }
 }
