@@ -9,7 +9,8 @@ public class ShipController : MonoBehaviour
     private float rotation;
     private Vector3 mousePos;
 
-
+    [SerializeField]
+    private List<Collider> collisions;
 
     void Awake()
     {
@@ -31,6 +32,8 @@ public class ShipController : MonoBehaviour
 
     void UpdatePositionWithKeyboardInput()
     {
+        //do either that or damage ship when trying to move while "stuck"
+        if(collisions.Count == 0)
         transform.position += transform.forward * throttle * Time.deltaTime;
         //transform.position += transform.right * strafe * Time.deltaTime;
     }
@@ -55,10 +58,13 @@ public class ShipController : MonoBehaviour
 
     //TODO: find good way to check collision and thereby disable movement
     // or just leave it at that and let the play run the ship against walls while taking massive damage
-    bool CheckCollision()
+    public void AddToCollsions(Collider collider)
     {
-        
-        return false;
+        collisions.Add(collider);
+    }
+
+    public void RemoveFromCollsions(Collider collider){
+        collisions.Remove(collider);
     }
 
 }
