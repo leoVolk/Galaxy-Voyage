@@ -6,9 +6,9 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [Header("Components")]
-    public List<Weapon> portArmament; 
-    public List<Weapon> starboardArmament; 
-    public List<Weapon> sternArmament; 
+    public List<Weapon> portArmament;
+    public List<Weapon> starboardArmament;
+    public List<Weapon> sternArmament;
     public List<Weapon> bowArmament;
 
 
@@ -31,7 +31,7 @@ public class WeaponController : MonoBehaviour
     public void SetWeaponBasedOnAngle()
     {
         float angle = AngleDir();
-        
+
         if (angle <= -30f && angle >= -150f)
         {
             // set to port armament
@@ -42,28 +42,41 @@ public class WeaponController : MonoBehaviour
             // set to starboard armament
             currentWeapons = starboardArmament;
         }
-        else if(angle > -30f && angle < 30f)
+        else if (angle > -30f && angle < 30f)
         {
-            //set to bow armament
-            currentWeapons = bowArmament;
+            if (bowArmament.Count > 0)
+                // set to stern armament
+                currentWeapons = bowArmament;
+            else
+                currentWeapons = null; ;
         }
-        else if(angle > 150f || angle < -150f)
+        else if (angle > 150f || angle < -150f)
         {
-            // set to stern armament
-            currentWeapons = sternArmament;
+            if (sternArmament.Count > 0)
+                // set to stern armament
+                currentWeapons = sternArmament;
+            else
+                currentWeapons = null;
         }
     }
 
-    public void ShootWeaponsBasedOnAngle(bool firing){
-        if(currentWeapons.Count > 0){
-            foreach(Weapon weapon in currentWeapons){
-                weapon.isFiring = firing;
+    public void ShootWeaponsBasedOnAngle(bool firing)
+    {
+        if (currentWeapons != null)
+        {
+            if (currentWeapons.Count > 0)
+            {
+                foreach (Weapon weapon in currentWeapons)
+                {
+                    weapon.isFiring = firing;
+                }
             }
+
         }
     }
 
     float AngleDir()
     {
-        return Vector3.SignedAngle(transform.forward,Utils.GetMousePositon(transform)- transform.position, transform.up);
+        return Vector3.SignedAngle(transform.forward, Utils.GetMousePositon(transform) - transform.position, transform.up);
     }
 }
