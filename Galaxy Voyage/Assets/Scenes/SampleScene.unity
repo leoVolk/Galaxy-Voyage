@@ -127,7 +127,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1410
+  m_Name: pb_Mesh-1430
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2155,12 +2155,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 1.5
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.25, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1890585111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,6 +2767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571258162748833248, guid: c48eed401d8834d4eab94c3ad27069d3,
+        type: 3}
+      propertyPath: ignore.m_Bits
+      value: 1536
       objectReference: {fileID: 0}
     - target: {fileID: 2571258162748833251, guid: c48eed401d8834d4eab94c3ad27069d3,
         type: 3}
