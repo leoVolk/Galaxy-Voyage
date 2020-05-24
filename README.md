@@ -4,8 +4,8 @@ A WIP space exploration game set in a futuristic 18th century style galaxy.
 
 ## Controls
 
-Use W and S to manage the throttle of you ship and the mouse to steer. 
-Press Mouse0 to fire the currenty equipped weapon. (Defaults are cannons on the left and right side of your ship).
+Use W and S to manage the throttle of you ship and A&D to steer.
+Press Mouse0 to fire the currenty equipped weapon. Weapons will switch based on the angle where the mouse is aiming.
 You can use the space bar to slow down time while holding it.
 
 ## General Information
